@@ -15,7 +15,7 @@ class DeviceScreen: UIViewController,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = deviceTable.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         cell.textLabel?.text = name[indexPath.row]
-       // cell.textLabel?.text = deviceNumber[indexPath.row]
+        cell.detailTextLabel?.text = "Device Number: \(deviceNumber[indexPath.row])"
         return cell
     }
     
@@ -31,7 +31,8 @@ class DeviceScreen: UIViewController,UITableViewDataSource {
         print(numberDevices1)
         print(names1)
         deviceTable.dataSource = self
-    
+        print(deviceNumber)
+        print(name)
 
         // Do any additional setup after loading the view.
     }
@@ -40,6 +41,21 @@ class DeviceScreen: UIViewController,UITableViewDataSource {
     
     var numberDevices1 = " "
     var names1 = " "
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let nvc = segue.destination as! InventoryScreen
+        if let indexPath = deviceTable.indexPathForSelectedRow {
+            print(indexPath.row)
+            let names1 = segue.destination as! InventoryScreen
+            let devices1 = segue.destination as! InventoryScreen
+            if segue.identifier == "checkInScreen"
+            {
+                nvc.devices2 = deviceNumber[indexPath.row]
+                
+                nvc.names2 = name[indexPath.row]
+            
+            
+        }
 
     /*
     // MARK: - Navigation
@@ -51,4 +67,6 @@ class DeviceScreen: UIViewController,UITableViewDataSource {
     }
     */
 
+}
+    }
 }

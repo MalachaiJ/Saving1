@@ -12,14 +12,25 @@ class InventoryScreen: UIViewController {
     @IBOutlet weak var deviceLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var checkInButton: UIButton!
+    var names2 = ""
+    var devices2 = ""
+    
     override func viewDidLoad() {
-        
+        deviceLabel.text = devices2
+        numberLabel.text = names2
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
 
+    @IBAction func checkIn(_ sender: Any)
+    {
+        
+    }
+   
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -30,4 +41,4 @@ class InventoryScreen: UIViewController {
     }
     */
 
-}
+
